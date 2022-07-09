@@ -5,18 +5,32 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Methods {
-    Random rand = new Random();
-    Scanner scanner = new Scanner(System.in);
 
-    int getNumber(String message) {
+    static Scanner scanner = new Scanner(System.in);
+    static int userInput = scanner.nextInt();
+
+    static int getNumber(String message) {
         while (true) {
             System.out.print(message);
             try {
-                return scanner.nextInt();
-            }
-            catch (InputMismatchException e) {
-                System.out.println("\"" + scanner.next() + "\" isn't a number!");
+                return userInput;
+            } catch (InputMismatchException e) {
+                System.out.println("\"" + userInput + "\" isn't a number!");
             }
         }
     }
+    static int askHowManyAcresToBuy(int acresToBuy) {
+        return acresToBuy;
+    }
+    static int askHowManyAcresToSell(int acresToSell) {
+        return acresToSell;
+    }
+    static int askHowMuchGrainToFeedPeople(int input) {
+        return input;
+    }
+    static int askHowManyAcresToPlant(int acres, int population, int bushels) {
+        return acres;
+    }
 }
+
+
