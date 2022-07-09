@@ -29,6 +29,12 @@ public class Hammurabi {
                 "The city owns 1000 acres of land.\n" +
                 "Land is currently worth 19 bushels per acre.");
 
+        while (gameOn) {
+
+
+
+            year++;
+        }
     }
 
 }
