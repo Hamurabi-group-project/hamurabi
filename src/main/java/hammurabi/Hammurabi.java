@@ -47,6 +47,7 @@ public class Hammurabi {
                     "The city owns " + acres + " acres of land.\n" +
                     "Land is currently worth " + price + " bushels per acre.\n");
 
+
         while (year <= 10) {
             System.out.println("Are you looking to buy or sell land?\n" +
                                 "(1) to buy, (2) to sell, (3) to bypass");
@@ -66,6 +67,7 @@ public class Hammurabi {
                         bushelsOwned += (acresToSell * price);
                     }
                 }
+
 
             System.out.println("How many bushels of grain would you like to use to feed your people?");
             int howMany = scanner.nextInt();
