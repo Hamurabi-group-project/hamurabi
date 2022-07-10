@@ -25,11 +25,19 @@ public class Methods {
     static int askHowManyAcresToSell(int acresToSell) {
         return acresToSell;
     }
-    static int askHowMuchGrainToFeedPeople(int input) {
-        return input;
+    static int askHowMuchGrainToFeedPeople(int input, int bushels) {
+        if (input > bushels) {
+            return bushels;
+        } else return input;
     }
     static int askHowManyAcresToPlant(int acres, int population, int bushels) {
-        return acres;
+        if (acres/10 <= population && acres*2 < bushels) {
+            return acres;
+        } else if (acres/10 <= population && acres*2 > bushels) {
+            return bushels*2;
+        } else {
+            return population*10;
+        }
     }
 }
 

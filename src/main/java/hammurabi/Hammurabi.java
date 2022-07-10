@@ -59,32 +59,36 @@ public class Hammurabi {
                         int acresToBuy = scanner.nextInt();
                         if ((acresToBuy * price) < bushelsOwned) {
                             acres += Methods.askHowManyAcresToBuy(acresToBuy);
+                            bushelsOwned -= (acresToBuy * price);
                             break;
                         }
                     } else if (userInput == 2) {
                         System.out.println("How many acres would you like to sell?");
                         int acresToSell = scanner.nextInt();
                         acres -= Methods.askHowManyAcresToSell(acresToSell);
+                        bushelsOwned += (acresToSell * price);
                         break;
                     }
                 }
 
             System.out.println("How many bushels of grain would you like to use to feed your people?");
             userInput = scanner.nextInt();
-            bushelsOfFood = Methods.askHowMuchGrainToFeedPeople(userInput);
+            bushelsOfFood = Methods.askHowMuchGrainToFeedPeople(userInput, bushelsOwned);
+            bushelsOwned -= bushelsOfFood;
 
             System.out.println("How many acres would you like to plant with grain?");
             userInput = scanner.nextInt();
             acresPlanted = Methods.askHowManyAcresToPlant(acres, people, bushelsOwned);
 
-//            int plagueDeaths = finalMethods.plagueDeaths(people);
-//            int starvationDeaths = finalMethods.starvationDeaths(people, bushelsOfFood);
-//            boolean uprising = finalMethods.uprising(people, starvationDeaths);
-//            int immigrants = finalMethods.immigrants(people, acres, bushels);
-//            int harvest = finalMethods.harvest(acres, bushelsOfSeed);
-//            int grainEatenByRats = finalMethods.grainEatenByRats(bushels);
-//            price = finalMethods.newCostOfLand();
-//            year++;
+
+//            int plagueDeaths = FinalMethods.plagueDeaths(people);
+//            int starvationDeaths = FinalMethods.starvationDeaths(people, bushelsOfFood);
+//            boolean uprising = FinalMethods.uprising(people, starvationDeaths);
+//            int immigrants = FinalMethods.immigrants(people, acres, bushels);
+//            int harvest = FinalMethods.harvest(acres, bushelsOfSeed);
+//            int grainEatenByRats = FinalMethods.grainEatenByRats(bushels);
+//            price = FinalMethods.newCostOfLand();
+            year++;
 //            System.out.println("O great Hammurabi!\n" +
 //                    "You are in year " + year + " of your ten year rule.\n" +
 //                    "In the previous year " + starvationDeaths + " people starved to death.\n" +
