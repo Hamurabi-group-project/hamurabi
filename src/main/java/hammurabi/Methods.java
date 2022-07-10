@@ -34,7 +34,7 @@ public class Methods {
         if (acres/10 <= population && acres*2 < bushels) {
             return acres;
         } else if (acres/10 <= population && acres*2 > bushels) {
-            return bushels*2;
+            return bushels/2;
         } else {
             return population*10;
         }

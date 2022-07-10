@@ -38,7 +38,6 @@ public class Hammurabi {
                 
                 Ready to play?
                 """);
-        String ready = scanner.next();
         System.out.println("O great Hammurabi!\n" +
                     "You are in year " + year + " of your ten year rule.\n" +
                     "In the previous year 0 people starved to death.\n" +
@@ -81,23 +80,27 @@ public class Hammurabi {
             acresPlanted = Methods.askHowManyAcresToPlant(acres, people, bushelsOwned);
 
 
-//            int plagueDeaths = FinalMethods.plagueDeaths(people);
-//            int starvationDeaths = FinalMethods.starvationDeaths(people, bushelsOfFood);
-//            boolean uprising = FinalMethods.uprising(people, starvationDeaths);
-//            int immigrants = FinalMethods.immigrants(people, acres, bushels);
-//            int harvest = FinalMethods.harvest(acres, bushelsOfSeed);
-//            int grainEatenByRats = FinalMethods.grainEatenByRats(bushels);
-//            price = FinalMethods.newCostOfLand();
+            int plagueDeaths = FinalMethods.plagueDeaths(people);
+            int starvationDeaths = FinalMethods.starvationDeaths(people, bushelsOfFood);
+            boolean uprising = FinalMethods.uprising(people, starvationDeaths);
+            int immigrants = FinalMethods.immigrants(people, acres, bushelsOwned);
+            int[] harvestArray = FinalMethods.harvest(acres);
+            int harvest = harvestArray[0];
+            int harvestRate = harvestArray[1];
+//harvest tests only have one parameter, so we removed it here
+            int grainEatenByRats = FinalMethods.grainEatenByRats(bushelsOwned);
+            price = FinalMethods.newCostOfLand();
             year++;
-//            System.out.println("O great Hammurabi!\n" +
-//                    "You are in year " + year + " of your ten year rule.\n" +
-//                    "In the previous year " + starvationDeaths + " people starved to death.\n" +
-//                    "In the previous year " + immigrants + " people entered the kingdom.\n" +
-//                    "The population is now " + people + ".\n" +
-//                    "We harvested " + harvest + " bushels at " + harvestRate + " bushels per acre.\n" +
-//                    "Rats destroyed " + grainEatenByRats + " bushels, leaving " + bushelsOwned + " bushels in storage.\n" +
-//                    "The city owns " + acres + " acres of land.\n" +
-//                    "Land is currently worth " + price + " bushels per acre.\n");
+            System.out.println("O great Hammurabi!\n" +
+                    "You are in year " + year + " of your ten year rule.\n" +
+                    "In the previous year " + plagueDeaths + " people died of the plague.\n" +
+                    "In the previous year " + starvationDeaths + " people starved to death.\n" +
+                    "In the previous year " + immigrants + " people entered the kingdom.\n" +
+                    "The population is now " + people + ".\n" +
+                    "We harvested " + harvest + " bushels at " + harvestRate + " bushels per acre.\n" +
+                    "Rats destroyed " + grainEatenByRats + " bushels, leaving " + bushelsOwned + " bushels in storage.\n" +
+                    "The city owns " + acres + " acres of land.\n" +
+                    "Land is currently worth " + price + " bushels per acre.\n");
         }
     }
 }
