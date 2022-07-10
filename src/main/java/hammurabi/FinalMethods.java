@@ -33,26 +33,25 @@ public class FinalMethods {
     }
 
     public static Boolean uprising(int population, int howManyPeopleStarved) {
-
         return howManyPeopleStarved > population * 0.45;
     }
 
 
     public static Integer immigrants(int population, int acresOwned, int grainInStorage) {
-
         return (20 * acresOwned + grainInStorage) / (100 * population) + 1;
     }
+    
+    public static int[] harvest(int acres) {
 
-    public static Integer harvest(int acres) {
-
-        int bushels;
+        int bushels = 0;
         int harvestRate = rand.nextInt(6) + 1;
         bushels = acres * harvestRate;
-        System.out.print(bushels);
-
-        return bushels;
+        int[] ans = new int[2];
+        ans[0] = bushels;
+        ans[1] = harvestRate;
+        
+        return ans;
     }
-
 
     public static Integer grainEatenByRats(int bushels) {
 
@@ -64,7 +63,7 @@ public class FinalMethods {
         }
         System.out.println(ratEats);
         return ratEats;
-
+        
      //40% chance of rat infestation
      //if so, rats will eat btwn 10%-30% of your grain
      //return amount of grain eaten by rats(possibly zero)

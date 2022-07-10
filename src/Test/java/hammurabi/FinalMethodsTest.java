@@ -120,6 +120,5 @@ public class FinalMethodsTest {
             assertTrue("You never have a land cost of " + j + " bushels per acre.", cost[j] > 0);
         }
     }
-
 }
 
