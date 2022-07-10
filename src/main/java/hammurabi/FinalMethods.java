@@ -10,11 +10,8 @@ public class FinalMethods {
         boolean isPlague;
         int plagueIndex = rand.nextInt(101);
 
-        if (plagueIndex > 85) {
-            isPlague = true;
-        } else {
-            isPlague = false;
-        }
+
+        isPlague = plagueIndex > 85;
         if (isPlague) {
             plagueDeaths = (int) (0.5 * population);
         }
@@ -27,30 +24,23 @@ public class FinalMethods {
         int starvationDeaths = 0;
         int peopleFed = bushelsFedToPeople / 20;
 
-        if (population > bushelsFedToPeople / 20) {
+        if (population > peopleFed) {
 
-            starvationDeaths = population - bushelsFedToPeople / 20;
+            starvationDeaths = population - peopleFed;
         }
 
-        return starvationDeaths;
+        return starvationDeaths; //this returns the number of deaths due to starvation
     }
-
 
     public static Boolean uprising(int population, int howManyPeopleStarved) {
-
-        boolean isRevolt = false;
-
-        if (howManyPeopleStarved > population *0.45) {
-            isRevolt = true;
-        }
-
-        return isRevolt;
+        return howManyPeopleStarved > population * 0.45;
     }
+
 
     public static Integer immigrants(int population, int acresOwned, int grainInStorage) {
         return (20 * acresOwned + grainInStorage) / (100 * population) + 1;
     }
-
+    
     public static int[] harvest(int acres) {
 
         int bushels = 0;
@@ -59,25 +49,35 @@ public class FinalMethods {
         int[] ans = new int[2];
         ans[0] = bushels;
         ans[1] = harvestRate;
-
+        
         return ans;
     }
 
     public static Integer grainEatenByRats(int bushels) {
+
+        int ratEats = 0;
+        int ratInfestRate = rand.nextInt(100);
+
+        if (ratInfestRate < 40) {
+            ratEats = ((10 + rand.nextInt(21)) * bushels) / 100;
+        }
+        System.out.println(ratEats);
+        return ratEats;
+        
      //40% chance of rat infestation
      //if so, rats will eat btwn 10%-30% of your grain
      //return amount of grain eaten by rats(possibly zero)
      //no need for boolean here because this method has already been established that there's a rat infestation
 
-        double ratEats10 = 0.1;
-        double ratEats20 = 0.2;
-        double ratEats30 = 0.3;
-
-        double grainsEaten = ratEats10 * bushels;
-
-
-        return Math.toIntExact(Math.round(grainsEaten));
-        //Math.toIntExact returns solution as an integer
+//        double ratEats10 = 0.1;
+//        double ratEats20 = 0.2;
+//        double ratEats30 = 0.3;
+//
+//        double grainsEaten = ratEats10 * bushels;
+//
+//
+//        return Math.toIntExact(Math.round(grainsEaten));
+//        Math.toIntExact returns solution as an integer
     }
 
     public static Integer newCostOfLand() {
