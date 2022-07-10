@@ -4,7 +4,7 @@ import java.util.Random;
 public class FinalMethods {
     static Random rand = new Random();
 
-    public Integer plagueDeaths(int population) {
+    public static Integer plagueDeaths(int population) {
 
         int plagueDeaths = 0;
         boolean isPlague;
@@ -22,7 +22,7 @@ public class FinalMethods {
         return plagueDeaths;
     }
 
-    public Integer starvationDeaths(int population, int bushelsFedToPeople) {
+    public static Integer starvationDeaths(int population, int bushelsFedToPeople) {
 
         int starvationDeaths = 0;
         int peopleFed = bushelsFedToPeople / 20;
@@ -36,7 +36,7 @@ public class FinalMethods {
     }
 
 
-    public Boolean uprising(int population, int howManyPeopleStarved) {
+    public static Boolean uprising(int population, int howManyPeopleStarved) {
 
         boolean isRevolt = false;
 
@@ -47,21 +47,23 @@ public class FinalMethods {
         return isRevolt;
     }
 
-    public Integer immigrants(int population, int acresOwned, int grainInStorage) {
+    public static Integer immigrants(int population, int acresOwned, int grainInStorage) {
         return (20 * acresOwned + grainInStorage) / (100 * population) + 1;
     }
 
-    public Integer harvest(int acres) {
+    public static int[] harvest(int acres) {
 
         int bushels = 0;
-        int cropYieldIndex = rand.nextInt(6) + 1;
-        bushels = acres * cropYieldIndex;
-        System.out.print(bushels);
+        int harvestRate = rand.nextInt(6) + 1;
+        bushels = acres * harvestRate;
+        int[] ans = new int[2];
+        ans[0] = bushels;
+        ans[1] = harvestRate;
 
-        return bushels;
+        return ans;
     }
 
-    public Integer grainsEatenByRats(int bushels) {
+    public static Integer grainEatenByRats(int bushels) {
      //40% chance of rat infestation
      //if so, rats will eat btwn 10%-30% of your grain
      //return amount of grain eaten by rats(possibly zero)
@@ -78,7 +80,7 @@ public class FinalMethods {
         //Math.toIntExact returns solution as an integer
     }
 
-    public Integer newCostOfLand() {
+    public static Integer newCostOfLand() {
     //price of land is random, ranges from 17 to 23 bushels/acre
     //return new price for next set of decisions player has to make
     //player will need this info to buy or sell land
