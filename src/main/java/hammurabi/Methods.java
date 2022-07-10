@@ -31,7 +31,7 @@ public class Methods {
         } else return input;
     }
     static int askHowManyAcresToPlant(int acres, int population, int bushels) {
-        if (acres/10 <= population && acres*2 < bushels) {
+        if (acres/10 <= population && acres*2 <= bushels) {
             return acres;
         } else if (acres/10 <= population && acres*2 > bushels) {
             return bushels/2;

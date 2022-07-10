@@ -16,12 +16,11 @@ public class Hammurabi {
         int people = 100;
         int bushelsOwned = 2800;
         int bushelsOfFood = 0;
-        int bushelsOfSeed = 0;
         int acres = 1000;
         int acresPlanted = 0;
         int price = 19;
         int year = 1;
-        boolean gameOn = true;
+
 
 
         System.out.println("""
@@ -48,49 +47,54 @@ public class Hammurabi {
                     "The city owns " + acres + " acres of land.\n" +
                     "Land is currently worth " + price + " bushels per acre.\n");
 
-        while (gameOn) {
+        while (year <= 10) {
             System.out.println("Are you looking to buy or sell land?\n" +
                                 "(1) to buy, (2) to sell, (3) to bypass");
             int userInput = scanner.nextInt();
-                while (userInput == 1 || userInput == 2) {
+                if (userInput == 1 || userInput == 2) {
                     if (userInput == 1) {
                         System.out.println("How many acres would you like to buy?");
                         int acresToBuy = scanner.nextInt();
                         if ((acresToBuy * price) < bushelsOwned) {
                             acres += Methods.askHowManyAcresToBuy(acresToBuy);
                             bushelsOwned -= (acresToBuy * price);
-                            break;
                         }
                     } else if (userInput == 2) {
                         System.out.println("How many acres would you like to sell?");
                         int acresToSell = scanner.nextInt();
                         acres -= Methods.askHowManyAcresToSell(acresToSell);
                         bushelsOwned += (acresToSell * price);
-                        break;
                     }
                 }
 
             System.out.println("How many bushels of grain would you like to use to feed your people?");
-            userInput = scanner.nextInt();
-            bushelsOfFood = Methods.askHowMuchGrainToFeedPeople(userInput, bushelsOwned);
+            int howMany = scanner.nextInt();
+            bushelsOfFood = Methods.askHowMuchGrainToFeedPeople(howMany, bushelsOwned);
             bushelsOwned -= bushelsOfFood;
 
             System.out.println("How many acres would you like to plant with grain?");
-            userInput = scanner.nextInt();
-            acresPlanted = Methods.askHowManyAcresToPlant(acres, people, bushelsOwned);
+            int howMuch = scanner.nextInt();
+            acresPlanted = Methods.askHowManyAcresToPlant(howMuch, people, bushelsOwned);
+            bushelsOwned -= (acresPlanted * 2);
 
 
             int plagueDeaths = FinalMethods.plagueDeaths(people);
             int starvationDeaths = FinalMethods.starvationDeaths(people, bushelsOfFood);
-            boolean uprising = FinalMethods.uprising(people, starvationDeaths);
+            boolean revolt = FinalMethods.uprising(people, starvationDeaths);
             int immigrants = FinalMethods.immigrants(people, acres, bushelsOwned);
-            int[] harvestArray = FinalMethods.harvest(acres);
+            int[] harvestArray = FinalMethods.harvest(acresPlanted);
             int harvest = harvestArray[0];
             int harvestRate = harvestArray[1];
 //harvest tests only have one parameter, so we removed it here
             int grainEatenByRats = FinalMethods.grainEatenByRats(bushelsOwned);
+            people = people - plagueDeaths - starvationDeaths + immigrants;
             price = FinalMethods.newCostOfLand();
+            bushelsOwned = (bushelsOwned - grainEatenByRats + harvest);
             year++;
+            if (revolt == true) {
+                System.out.println("Run Hammurabi! There's an uprising, the kingdom has been overthrown!");
+                break;
+            }
             System.out.println("O great Hammurabi!\n" +
                     "You are in year " + year + " of your ten year rule.\n" +
                     "In the previous year " + plagueDeaths + " people died of the plague.\n" +
