@@ -41,11 +41,31 @@ public class FinalMethods {
     }
 
     public Integer grainsEatenByRats(int bushels) {
-        return null;
+     //40% chance of rat infestation
+     //if so, rats will eat btwn 10%-30% of your grain
+     //return amount of grain eaten by rats(possibly zero)
+     //no need for boolean here because this method has already been established that there's a rat infestation
+
+        double ratEats10 = 0.1;
+        double ratEats20 = 0.2;
+        double ratEats30 = 0.3;
+
+        double grainsEaten = ratEats10 * bushels;
+
+
+        return Math.toIntExact(Math.round(grainsEaten));
+        //Math.toIntExact returns solution as an integer
     }
 
     public Integer newCostOfLand() {
-        return null;
+    //price of land is random, ranges from 17 to 23 bushels/acre
+    //return new price for next set of decisions player has to make
+    //player will need this info to buy or sell land
+    //get a random # generator
+        int x = rand.nextInt(23 - 17 + 1) + 17;
+                System.out.println(x);
+
+        return x;
     }
 
 
