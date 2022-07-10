@@ -78,7 +78,7 @@ public class FinalMethods {
 //
 //
 //        return Math.toIntExact(Math.round(grainsEaten));
-        //Math.toIntExact returns solution as an integer
+//        Math.toIntExact returns solution as an integer
     }
 
     public static Integer newCostOfLand() {
