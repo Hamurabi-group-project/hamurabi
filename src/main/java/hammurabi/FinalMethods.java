@@ -61,7 +61,6 @@ public class FinalMethods {
         if (ratInfestRate < 40) {
             ratEats = ((10 + rand.nextInt(21)) * bushels) / 100;
         }
-        System.out.println(ratEats);
         return ratEats;
         
      //40% chance of rat infestation
@@ -86,7 +85,6 @@ public class FinalMethods {
     //player will need this info to buy or sell land
     //get a random # generator
         int x = rand.nextInt(23 - 17 + 1) + 17;
-                System.out.println(x);
 
         return x;
     }
