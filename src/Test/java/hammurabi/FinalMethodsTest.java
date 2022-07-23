@@ -42,7 +42,7 @@ public class FinalMethodsTest {
         assertEquals("In a plague, " + deaths + "% of your people die, not 50%.",
                 50, deaths);
     }
-//
+
     @Test
     public final void testStarvationDeaths() {
         int deaths = ham.starvationDeaths(100, 1639);
@@ -69,7 +69,7 @@ public class FinalMethodsTest {
     public final void testHarvest() {
         int[] yield = new int[7];
         for (int i = 0; i < 1000; i++) {
-            int harvest = ham.harvest(1);
+            int[] harvest = ham.harvest(1);
             assertTrue("Illegal harvest per acre: " + harvest, harvest > 0 && harvest <= 6);
             yield[harvest] += 1;
         }
